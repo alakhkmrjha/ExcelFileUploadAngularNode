@@ -1,0 +1,58 @@
+
+<form  (ngSubmit)="onSubmit()" class="form-group" [formGroup]="form">
+
+<table class="table table-striped" >
+<tr>
+<td>Select Excel File </td>
+<td> : </td>
+<td> <input type="file" id="fileUploader" (change)="onFileChange($event)" name="fileUploader" #fileInput accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+    <button type="button" class="btn btn-sm btn-default" (click)="clearFile()">clear file</button>
+    </td>
+    </tr>
+    <tr>
+<td colspan="3">
+ <button type="submit" [disabled]="!isFileAdded" class="btn btn-success">Submit
+       <i class="fa fa-spinner fa-spin fa-fw" *ngIf="loading"></i>
+       </button>
+    </td>
+        </tr>
+</table>
+
+<hr/>
+<p class="h1"> Report </p>
+ <hr/>
+ <h4> Female </h4>
+  <table class="table table-striped" *ngIf="femaleReport.length > 0">
+      <thead>
+   <tr>
+<th> Nationality </th>
+<th>0 To 30 </th>
+<th> 30 To 50</th>
+<th> 50 and above</th>
+   </tr>
+   </thead>
+   <tr *ngFor="let female of  femaleReport">
+      <td> {{female.Nationality}} </td>
+       <td> {{female.Age0_30}} </td>
+        <td> {{female.Age30_50}} </td>
+         <td> {{female.Age50_avove}} </td>
+   </tr>
+  </table>
+  <h4> Male </h4>
+  <table class="table table-striped" *ngIf="maleReport.length > 0">
+      <thead>
+   <tr>
+<th> Nationality </th>
+<th>0 To 30 </th>
+<th> 30 To 50</th>
+<th> 50 and above</th>
+   </tr>
+      </thead>
+   <tr *ngFor="let male of  maleReport">
+      <td> {{male.Nationality}} </td>
+       <td> {{male.Age0_30}} </td>
+        <td> {{male.Age30_50}} </td>
+         <td> {{male.Age50_avove}} </td>
+   </tr>
+  </table>
+</form>
